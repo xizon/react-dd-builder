@@ -1,8 +1,8 @@
 # React DD Builder
 
 
-[![Travis CI](https://api.travis-ci.org/xizon/web-kiter.svg?branch=master)](https://travis-ci.org/xizon/web-kiter/)
-[![npm version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=js&type=6&v=0.0.1&x2=0)](https://www.npmjs.com/package/web-kiter)
+[![Travis CI](https://api.travis-ci.org/xizon/react-dd-builder.svg?branch=master)](https://travis-ci.org/xizon/react-dd-builder/)
+[![npm version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=js&type=6&v=0.0.1&x2=0)](https://www.npmjs.com/package/react-dd-builder)
 [![license](https://img.shields.io/badge/license-gpl3-brightgreen.svg)](LICENSE)
 
 
@@ -31,23 +31,23 @@ React DD Builder is a set of React drag and drop tool to help you build beautifu
 
 ## Installation And Test
 
-**Step 1.** Use NPM (Locate your current directory of project, and enter the following command.) or download the latest version from [Github](https://github.com/xizon/web-kiter). For nodejs you have to install some dependencies.
+**Step 1.** Use NPM (Locate your current directory of project, and enter the following command.) or download the latest version from [Github](https://github.com/xizon/react-dd-builder). For nodejs you have to install some dependencies.
 
 ```sh
-$ sudo npm install web-kiter
+$ sudo npm install react-dd-builder
 ```
 
 Or clone the repo to get all source files including build scripts: 
 
 ```sh
-$ git clone git://github.com/xizon/web-kiter.git
+$ git clone git://github.com/xizon/react-dd-builder.git
 ```
 
 
-**Step 2.** First, using an absolute path into your `"web-kiter/"` folder directory.
+**Step 2.** First, using an absolute path into your `"react-dd-builder/"` folder directory.
 
 ```sh
-$ cd /{your_directory}/web-kiter
+$ cd /{your_directory}/react-dd-builder
 ```
 
 
@@ -90,7 +90,7 @@ $ sudo chown -R $USER:$(id -gn $USER) /Users/{username}/.config
 
 ```sh
 
-web-kiter/
+react-dd-builder/
 ├── README.md
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
@@ -100,15 +100,15 @@ web-kiter/
 ├── package.json
 ├── dist/
 │   ├── css/
-│   │   ├── web-kiter.css
-│   │   ├── web-kiter.css.map
-│   │   ├── web-kiter.min.css
-│   │   └── web-kiter.min.css.map
+│   │   ├── app.css
+│   │   ├── app.css.map
+│   │   ├── app.min.css
+│   │   └── app.min.css.map
 │   └── js/
-│   │   ├── web-kiter.js
-│   │   ├── web-kiter.js.map
-│   │   ├── web-kiter.min.js
-│   │   └── web-kiter.min.js.map
+│   │   ├── app.js
+│   │   ├── app.js.map
+│   │   ├── app.min.js
+│   │   └── app.min.js.map
 ├── src/
 │   ├── index.js
 │   ├── components/
