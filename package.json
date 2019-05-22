@@ -1,7 +1,7 @@
 {
   "author": "UIUX Lab",
   "name": "react-dd-builder",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React DD Builder is a set of React drag and drop tool to help you build beautiful website interfaces while keeping responsive and third-party framework compatible.",
   "main": "webpack.config.js",
   "directories": {
@@ -19,12 +19,12 @@
   },
   "keywords": [
     "web",
-    "kit",
-    "kits",
+    "builder",
+    "react",
     "front-end",
     "webdesign",
-    "builder",
-    "build",
+    "drag-and-drop",
+    "drag-drop",
     "webpack"
   ],
   "license": "MIT",

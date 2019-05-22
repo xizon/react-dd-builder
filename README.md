@@ -2,8 +2,14 @@
 
 
 [![Travis CI](https://api.travis-ci.org/xizon/react-dd-builder.svg?branch=master)](https://travis-ci.org/xizon/react-dd-builder/)
-[![npm version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=js&type=6&v=0.0.1&x2=0)](https://www.npmjs.com/package/react-dd-builder)
+[![npm version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=js&type=6&v=0.0.3&x2=0)](https://www.npmjs.com/package/react-dd-builder)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
+
+
+## Demo
+
+[https://xizon.github.io/react-dd-builder/examples/](https://xizon.github.io/react-dd-builder/examples/)
+
 
 
 ## Table of Contents
