@@ -19,12 +19,12 @@
   },
   "keywords": [
     "web",
-    "kit",
-    "kits",
+    "builder",
+    "react",
     "front-end",
     "webdesign",
-    "builder",
-    "build",
+    "drag-and-drop",
+    "drag-drop",
     "webpack"
   ],
   "license": "MIT",
