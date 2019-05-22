@@ -1,0 +1,133 @@
+ul.app__primary-menu {
+	display: block;
+	margin: 0;
+	padding: 0;
+	
+	
+	
+	> li {
+		> div {
+			cursor: pointer;
+			border: 1px solid #333;
+			padding: 5px 10px;
+			margin-bottom: 10px;
+			
+			&:hover {
+			    color: red;
+			}
+			
+			&.nav-active {
+				
+				~ ul.app__primary-submenu {
+					display: block;
+				}
+				
+			}
+		}
+	}
+
+	li {
+		display: block;
+		transition: .1s ease-in-out;
+		padding: 0;
+		text-align: left;
+		
+		ul.app__primary-submenu {
+			padding-left: 1rem;
+			display: none;
+			
+			li {
+				
+				> div {
+					background: rgb(51, 51, 51); 
+					color: rgb(255, 255, 255); 
+					margin: 3px; 
+					padding: 5px; 
+					cursor: default;
+					transition: .1s ease-in-out;
+
+					&:hover {
+						cursor: move;
+						background: lightblue;
+					}
+
+					> div.app-preview {
+
+
+					}
+					
+					
+
+				}					
+				
+			}
+
+		}
+
+
+
+
+	}
+}
+
+
+.app {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+	
+	.app__todos {
+		background-color: #ddd;
+		min-height: 250px;
+		width: 200px;
+		padding: 10px;
+		margin: 10px;
+	
+	}
+	.app__dones {
+		background-color: #efefef;
+		min-height: 250px;
+		width: 200px;
+		padding: 10px;
+		margin: 10px;
+
+		> div {
+			
+			&:focus {
+				outline: none;
+					
+			}
+			
+		}
+
+	}
+	
+}
+
+.app-section {
+	border: 1px dashed #333;
+	margin: .5rem;
+	position: relative;
+	transition: .1s ease-in-out;
+	
+	&:hover {
+		border-color: red;
+	}
+	
+	&::after {
+		content: '≡';
+		display: block;
+		color: #000;
+		opacity: .5;
+		position: absolute;
+		right: 3px;
+		top: 0;
+		font-size: 14px;
+		z-index: 1;
+		cursor: move;
+	}
+	
+}
+
+
+

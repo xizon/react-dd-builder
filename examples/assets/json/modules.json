@@ -1,0 +1,55 @@
+[
+	{
+	  "taskID": "wk-first-section",
+	  "preview": "<div class=\"app-preview\">Section 1</div>",
+	  "content": [
+					{
+					  "taskID": "wk-first-section--sub",
+					  "preview": "<div class=\"app-preview\">Section 1 (sub 1)</div>",	
+					  "code": "<div class=\"app-section\" style=\"box-shadow: inset 20px 0px 0px 0px #7b920a;\"><strong>String 1 ( Sub 1 )</strong></div>"
+					},
+					{
+					  "taskID": "wk-first-section--sub",
+					  "preview": "<div class=\"app-preview\">Section 1 (sub 2)</div>",
+					  "code": "<div class=\"app-section\" style=\"box-shadow: inset 20px 0px 0px 0px #7b920a;\"><strong>String 1 ( Sub 2 )</strong></div>"
+					},
+					{
+					  "taskID": "wk-first-section--sub",
+					  "preview": "<div class=\"app-preview\">Section 1 (sub 3)</div>",
+					  "code": "<div class=\"app-section\" style=\"box-shadow: inset 20px 0px 0px 0px #7b920a;\"><strong>String 1 ( Sub 3 )</strong></div>"
+					}
+				]
+	},
+	{
+	  "taskID": "wk-second-section",
+	  "preview": "<div class=\"app-preview\">Section 2</div>",
+	  "content": [
+					{
+					  "taskID": "wk-second-section--sub",
+					  "preview": "<div class=\"app-preview\">Section 2 (sub 1)</div>",	
+					  "code": "<div class=\"app-section\" style=\"box-shadow: inset 20px 0px 0px 0px #9b0021;\"><strong>String 2 ( Sub 1 )</strong></div>"
+					},
+					{
+					  "taskID": "wk-second-section--sub",
+					  "preview": "<div class=\"app-preview\">Section 2 (sub 2)</div>",
+					  "code": "<div class=\"app-section\" style=\"box-shadow: inset 20px 0px 0px 0px #9b0021;\"><strong>String 2 ( Sub 2 )</strong></div>"
+					}
+				]
+	},
+	{
+	  "taskID": "wk-third-section",
+	  "preview": "<div class=\"app-preview\">Section 3</div>",
+	  "content": [
+					{
+					  "taskID": "wk-third-section--sub",
+					  "preview": "<div class=\"app-preview\">Section 3 (sub 1)</div>",	
+					  "code": "<div class=\"app-section\" style=\"box-shadow: inset 20px 0px 0px 0px #1320a4;\"><strong>String 3 ( Sub 1 )</strong></div>"
+					},
+					{
+					  "taskID": "wk-third-section--sub",
+					  "preview": "<div class=\"app-preview\">Section 3 (sub 2)</div>",
+					  "code": "<div class=\"app-section\" style=\"box-shadow: inset 20px 0px 0px 0px #1320a4;\"><strong>String 3 ( Sub 2 )</strong></div>"
+					}
+				]
+	}
+]
