@@ -9,14 +9,12 @@ const MiniCssExtractPlugin       = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin    = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin         = require('clean-webpack-plugin');
 const glob                       = require('glob');
-const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
 const randomString               = require('random-string');
 const IncludeFileWebpackPlugin   = require('include-file-webpack-plugin');
 const moment                     = require('moment');
 const WebpackDevServer           = require('webpack-dev-server');
 const json                       = JSON.parse(fs.readFileSync('./package.json'));
 const webpackDevMiddleware       = require('webpack-dev-middleware');
-const ConcatPlugin               = require('webpack-concat-plugin');
 const minify                     = require('@node-minify/core');
 const uglifyJS                   = require('@node-minify/uglify-js');
 
@@ -37,7 +35,7 @@ let globs = {
  */
 
 let customWebsiteVersion     = json.version,
-	customWebsiteAuthor      = json.author,
+	customWebsiteAuthor      = ( Object.prototype.toString.call( json.author ) == '[object Object]' ) ? json.author.name : json.author,
 	customWebsiteTitle       = 'React DD Builder',
 	customWebsiteDesc        = 'React DD Builder is a set of React drag and drop tool to help you build beautiful website interfaces while keeping responsive and third-party framework compatible.',
 	customWebsiteCanonical   = '<link rel="canonical" href="https://uiux.cc" />',
@@ -81,6 +79,73 @@ let targetAllWatchFilesName = [].concat(...targetFilesNameArrays);
 
 //console.log( targetAllWatchFilesName );
 
+
+
+
+
+// Return all the configs of string replacement for page templates
+let replaceTemps = [];
+targetTempFilesName.map( ( event ) => {
+	replaceTemps.push( {
+				dir: globs.examples,
+				files: [ event[1], event[1] ],
+				rules: [
+					{ search: '@@{website_title}', replace: customWebsiteTitle },
+					{ search: '@@{website_desc}', replace: customWebsiteDesc },
+					{ search: '@@{website_canonical}', replace: customWebsiteCanonical },
+					{ search: '@@{website_author}', replace: customWebsiteAuthor },
+					{ search: '@@{website_generator}', replace: customWebsiteGenerator },
+					{ search: '@@{website_version}', replace: customWebsiteVersion },
+					{ search: '@@{website_comment}', replace: customWebsiteComment },
+					{ search: '@@{website_hash}', replace: customWebsiteHash },
+
+				]
+			} );
+	
+});
+
+// String replacement for page templates
+class ReplacePlaceholderForFile {
+	constructor( options ) {
+		this.options = options;
+	}
+	apply( compiler ) {
+		compiler.hooks.done.tap('ReplacePlaceholderForFile', ( stats ) => {
+			
+			const filepath = this.options.filepath;
+			
+			fs.readFile( filepath, 'utf8', function(err, data ){
+
+				if ( err ) {
+					console.log( '=============[ ERROR: String Replacement Error! ]================' + err );
+				} else {
+
+					data = data.replace(/\@\@\{website_title\}/g, customWebsiteTitle )
+								.replace(/\@\@\{website_desc\}/g, customWebsiteDesc )
+								.replace(/\@\@\{website_canonical\}/g, customWebsiteCanonical )
+								.replace(/\@\@\{website_author\}/g, customWebsiteAuthor )
+								.replace(/\@\@\{website_generator\}/g, customWebsiteGenerator )
+								.replace(/\@\@\{website_version\}/g, customWebsiteVersion )
+								.replace(/\@\@\{website_comment\}/g, customWebsiteComment )
+								.replace(/\@\@\{website_hash\}/g, customWebsiteHash );
+
+					fs.writeFile( filepath, data, (err) => {
+						if ( err ) {
+							console.log( err );
+							return;
+						}
+						//file written successfully
+						console.log( `${filepath} written successfully!` );
+
+					});
+				}
+
+
+			});
+
+		});
+	}
+}
 
 
 
@@ -203,29 +268,24 @@ const webpackConfig = {
 	
 };
 
-/*! 
- *************************************
- *  Remove include files and extra CSS files
- *************************************
- */
+// Remove include files and extra CSS files
 webpackConfig.plugins.push(
     new CleanWebpackPlugin([
 		globs.build + '/**/*.css',
 		globs.examples + '/*.html',
 		
-	]),
-	
-	new webpack.BannerPlugin( customWebsiteComment ),
-	
+	])
 );
 
-/*! 
- *************************************
- *  Batch processing HTML template files
- *************************************
- */
+// Adds a banner to the top of each generated chunk.
+webpackConfig.plugins.push(
+    new webpack.BannerPlugin( customWebsiteComment )
+);
+
+
+// Batch processing HTML template files
 targetTempFilesName.map( ( event ) => {
-	
+
 	webpackConfig.plugins.push(
 		
 		new IncludeFileWebpackPlugin({
@@ -235,43 +295,31 @@ targetTempFilesName.map( ( event ) => {
 			processIncludeContents: function(html) {
 				return html;
 			}
-		}),	
-		
-		new ReplaceInFileWebpackPlugin([
-			{
-				dir: globs.examples,
-				files: [ event[1], event[1] ],
-				rules: [
-					{ search: '@@{website_title}', replace: customWebsiteTitle },
-					{ search: '@@{website_desc}', replace: customWebsiteDesc },
-					{ search: '@@{website_canonical}', replace: customWebsiteCanonical },
-					{ search: '@@{website_author}', replace: customWebsiteAuthor },
-					{ search: '@@{website_generator}', replace: customWebsiteGenerator },
-					{ search: '@@{website_version}', replace: customWebsiteVersion },
-					{ search: '@@{website_comment}', replace: customWebsiteComment },
-					{ search: '@@{website_hash}', replace: customWebsiteHash },
-
-				]
-			}
-		]),	
-		
+		})
 		
 	);
 });
 
-/*! 
- *************************************
- *  Add .min.css files souce map
- *************************************
- */
+
+// String replacement for page templates
+targetTempFilesName.map( ( event ) => {
+	
+	webpackConfig.plugins.push(
+		new ReplacePlaceholderForFile({
+			filepath: `./${globs.examples}/${event[1]}`
+		})
+	);
+
+});
+
+
+
+// Add .min.css files souce map
 webpackConfig.plugins.push(
 	new webpack.SourceMapDevToolPlugin({
 	  filename: '../css/[name].css.map',
-	}),
-
+	})
 );
-
-
 
 
 /*! 
@@ -318,28 +366,14 @@ targetAllWatchFilesName.map( ( event ) => {
 					}
 				}),
 
-				new ReplaceInFileWebpackPlugin([
-					{
-						dir: globs.examples,
-						files: [ event[1], event[1] ],
-						rules: [
-							{ search: '@@{website_title}', replace: customWebsiteTitle },
-							{ search: '@@{website_desc}', replace: customWebsiteDesc },
-							{ search: '@@{website_canonical}', replace: customWebsiteCanonical },
-							{ search: '@@{website_author}', replace: customWebsiteAuthor },
-							{ search: '@@{website_generator}', replace: customWebsiteGenerator },
-							{ search: '@@{website_version}', replace: customWebsiteVersion },
-							{ search: '@@{website_comment}', replace: customWebsiteComment },
-							{ search: '@@{website_hash}', replace: customWebsiteHash },
-
-						]
-					}
-				])
-
+				new ReplacePlaceholderForFile({
+					filepath: `./${globs.examples}/${event[1]}`
+				})
 			);
 
-		
 
+
+			
 		});
 
 		// Recompile the bundle with plugins:
@@ -381,15 +415,15 @@ server.listen( globs.port, "localhost", function (err, result) {
  *************************************
  */
 
-compiler.plugin( 'done', () => { 
-	
+compiler.hooks.done.tap( 'MyPlugin', ( compilation ) => {
+  // return true to emit the output, otherwise false
 	
 	let targetJSFile          = './'+globs.dist+'/js/app.js',
 		targetJSMinFile       = './'+globs.dist+'/js/app.min.js';
 	
 	fs.readFile( targetJSFile, function(err, data ){
 
-
+	
 		//Update the compressed js file
 		minify({
 			compressor: uglifyJS,
@@ -409,11 +443,10 @@ compiler.plugin( 'done', () => {
 
 
 	});
-
 	
-
+    return true;
 });
-			
+		
 									
 									
 /*! 

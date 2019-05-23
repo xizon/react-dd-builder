@@ -5,7 +5,6 @@ import SaveContainer from '../SaveContainer';
 import classie from '../Utilities/classie';
 import './style.scss';
 
-
 class App extends Component {
 	constructor(props) {
 
