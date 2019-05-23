@@ -116,34 +116,52 @@ class ReplacePlaceholderForFile {
 			
 			const filepath = this.options.filepath;
 			
+			// When the Node module is running, this plugin may be executed 
+			// at the same time, which will result in incomplete content reading.
+			/*
+			@Other method:
+			
+			try {  
+				var data = fs.readFileSync('file.html', 'utf8');
+				console.log(data);    
+			} catch(e) {
+				console.log('Error:', e.stack);
+			}
+			*/
 			fs.readFile( filepath, 'utf8', function(err, data ){
 
 				if ( err ) {
 					console.log(colors.fg.Red, err, colors.Reset);
 				} else {
+					
+					
+					if ( data.length > 0 && data.indexOf( '</html>' ) >= 0 ) {
+						data = data.replace(/\@\@\{website_title\}/g, customWebsiteTitle )
+									.replace(/\@\@\{website_desc\}/g, customWebsiteDesc )
+									.replace(/\@\@\{website_canonical\}/g, customWebsiteCanonical )
+									.replace(/\@\@\{website_author\}/g, customWebsiteAuthor )
+									.replace(/\@\@\{website_generator\}/g, customWebsiteGenerator )
+									.replace(/\@\@\{website_version\}/g, customWebsiteVersion )
+									.replace(/\@\@\{website_comment\}/g, customWebsiteComment )
+									.replace(/\@\@\{website_hash\}/g, customWebsiteHash );
 
-					data = data.replace(/\@\@\{website_title\}/g, customWebsiteTitle )
-								.replace(/\@\@\{website_desc\}/g, customWebsiteDesc )
-								.replace(/\@\@\{website_canonical\}/g, customWebsiteCanonical )
-								.replace(/\@\@\{website_author\}/g, customWebsiteAuthor )
-								.replace(/\@\@\{website_generator\}/g, customWebsiteGenerator )
-								.replace(/\@\@\{website_version\}/g, customWebsiteVersion )
-								.replace(/\@\@\{website_comment\}/g, customWebsiteComment )
-								.replace(/\@\@\{website_hash\}/g, customWebsiteHash );
+						fs.writeFile( filepath, data, (err) => {
+							if ( err ) {
+								console.log(colors.fg.Red, err, colors.Reset);
+								return;
+							}
+							//file written successfully
+							console.log(colors.fg.Green, `${filepath} written successfully!`, colors.Reset);
 
-					fs.writeFile( filepath, data, (err) => {
-						if ( err ) {
-							console.log(colors.fg.Red, err, colors.Reset);
-							return;
-						}
-						//file written successfully
-						console.log(colors.fg.Green, `${filepath} written successfully!`, colors.Reset);
+						});		
+					}
 
-					});
+
 				}
 
 
-			});
+			}); //end fs.readFile	
+			
 
 		});
 	}
