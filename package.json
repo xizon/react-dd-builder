@@ -11,7 +11,7 @@
     "watch": "webpack --watch",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "prettier": "prettier \"./dist/app.css\""
+    "prettier": "prettier \"./dist/css/app.css\""
   },
   "repository": {
     "type": "git",
