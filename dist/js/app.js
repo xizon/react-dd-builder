@@ -1,7 +1,7 @@
 /*!
  * 
  * ## Project Name        :  React DD Builder
- * ## Version             :  0.0.52
+ * ## Version             :  0.0.6
  * ## Based on            :  React DD Builder (https://github.com/xizon/react-dd-builder)
  * ## Last Update         :  May 23, 2019
  * ## Created by          :  UIUX Lab (https://uiux.cc)
@@ -74,7 +74,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "9910556c179725b0717b";
+/******/ 	var hotCurrentHash = "cdef071898da6bd7f164";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;

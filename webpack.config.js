@@ -17,7 +17,37 @@ const json                       = JSON.parse(fs.readFileSync('./package.json'))
 const webpackDevMiddleware       = require('webpack-dev-middleware');
 const minify                     = require('@node-minify/core');
 const uglifyJS                   = require('@node-minify/uglify-js');
-
+const colors = {
+    Reset: "\x1b[0m",
+    Bright: "\x1b[1m",
+    Dim: "\x1b[2m",
+    Underscore: "\x1b[4m",
+    Blink: "\x1b[5m",
+    Reverse: "\x1b[7m",
+    Hidden: "\x1b[8m",
+    fg: {
+        Black: "\x1b[30m",
+        Red: "\x1b[31m",
+        Green: "\x1b[32m",
+        Yellow: "\x1b[33m",
+        Blue: "\x1b[34m",
+        Magenta: "\x1b[35m",
+        Cyan: "\x1b[36m",
+        White: "\x1b[37m",
+        Crimson: "\x1b[38m" //القرمزي
+    },
+    bg: {
+        Black: "\x1b[40m",
+        Red: "\x1b[41m",
+        Green: "\x1b[42m",
+        Yellow: "\x1b[43m",
+        Blue: "\x1b[44m",
+        Magenta: "\x1b[45m",
+        Cyan: "\x1b[46m",
+        White: "\x1b[47m",
+        Crimson: "\x1b[48m"
+    }
+};
 
 let globs = {
 	port                : 8080,
@@ -75,9 +105,6 @@ let targetFilesNameArrays = [
 ];
 let targetAllWatchFilesName = [].concat(...targetFilesNameArrays);
 
-//console.log( targetAllWatchFilesName );
-
-
 
 // String replacement for page templates
 class ReplacePlaceholderForFile {
@@ -92,7 +119,7 @@ class ReplacePlaceholderForFile {
 			fs.readFile( filepath, 'utf8', function(err, data ){
 
 				if ( err ) {
-					console.log( '=============[ ERROR: String Replacement Error! ]================' + err );
+					console.log(colors.fg.Red, err, colors.Reset);
 				} else {
 
 					data = data.replace(/\@\@\{website_title\}/g, customWebsiteTitle )
@@ -106,11 +133,11 @@ class ReplacePlaceholderForFile {
 
 					fs.writeFile( filepath, data, (err) => {
 						if ( err ) {
-							console.log( err );
+							console.log(colors.fg.Red, err, colors.Reset);
 							return;
 						}
 						//file written successfully
-						console.log( `${filepath} written successfully!` );
+						console.log(colors.fg.Green, `${filepath} written successfully!`, colors.Reset);
 
 					});
 				}
@@ -316,7 +343,8 @@ targetAllWatchFilesName.map( ( event ) => {
 	let curFile = `${event[0]}`;
 
 	fs.watchFile( curFile, (curr, prev) => {
-	    console.log(`${curFile} file Changed`);
+	    
+		console.log(colors.fg.Yellow, `${curFile} file Changed`, colors.Reset);
 		
 		// After a short delay the configuration is changed and a banner plugin is added
 		// to the config
@@ -377,11 +405,11 @@ const server = new WebpackDevServer( compiler, {
 
 server.listen( globs.port, "localhost", function (err, result) {
 	if (err) {
-	    return console.log(err);
+	    return console.log(colors.fg.Red, err, colors.Reset);
 	}
 
 
-	console.log('Listening at http://localhost:8080/');
+	console.log(colors.fg.Yellow, 'Listening at http://localhost:8080/', colors.Reset);
 })
 
 /*! 
@@ -407,9 +435,9 @@ compiler.hooks.done.tap( 'MyPlugin', ( compilation ) => {
 			callback: function(err, min) {
 
 				if ( err ) {
-					console.log( '=============[ ERROR: Please Rebuild! ]================' + err );
+					console.log(colors.bg.Red, colors.fg.White, '===[ ERROR: File processing failed! ]=== Do not perform other operations after saving the <scss> or <js> file, please wait 10 seconds to rebuild.', colors.Reset);
 				} else {
-					console.log( targetJSMinFile + ' compressed successfully!' );
+					console.log(colors.bg.Green, colors.fg.White, `${targetJSMinFile} compressed successfully!`, colors.Reset);
 				}
 
 

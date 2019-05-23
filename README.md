@@ -2,7 +2,7 @@
 
 
 [![Travis CI](https://api.travis-ci.org/xizon/react-dd-builder.svg?branch=master)](https://travis-ci.org/xizon/react-dd-builder/)
-[![npm version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=js&type=6&v=0.0.5&x2=0)](https://www.npmjs.com/package/react-dd-builder)
+[![npm version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=js&type=6&v=0.0.6&x2=0)](https://www.npmjs.com/package/react-dd-builder)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 
 
@@ -34,6 +34,9 @@ React DD Builder is a set of React drag and drop tool to help you build beautifu
 
 
 ## Installation And Test
+
+You will need to have [node](https://nodejs.org/) setup on your machine. That will output the built distributables to `./dist/*` and `./examples/*.html`.
+
 
 **Step 1.** Use NPM (Locate your current directory of project, and enter the following command.) or download the latest version from [Github](https://github.com/xizon/react-dd-builder). For nodejs you have to install some dependencies.
 
