@@ -53,8 +53,6 @@ let customWebsiteVersion     = json.version,
 
 
 // Get all the HTML template files
-
-
 let tempAllPages = glob.sync( './'+globs.build+'/components/**/*.html' );
 let targetTempFilesName = [];
 let targetAllTempFilesName = [];
@@ -80,29 +78,6 @@ let targetAllWatchFilesName = [].concat(...targetFilesNameArrays);
 //console.log( targetAllWatchFilesName );
 
 
-
-
-
-// Return all the configs of string replacement for page templates
-let replaceTemps = [];
-targetTempFilesName.map( ( event ) => {
-	replaceTemps.push( {
-				dir: globs.examples,
-				files: [ event[1], event[1] ],
-				rules: [
-					{ search: '@@{website_title}', replace: customWebsiteTitle },
-					{ search: '@@{website_desc}', replace: customWebsiteDesc },
-					{ search: '@@{website_canonical}', replace: customWebsiteCanonical },
-					{ search: '@@{website_author}', replace: customWebsiteAuthor },
-					{ search: '@@{website_generator}', replace: customWebsiteGenerator },
-					{ search: '@@{website_version}', replace: customWebsiteVersion },
-					{ search: '@@{website_comment}', replace: customWebsiteComment },
-					{ search: '@@{website_hash}', replace: customWebsiteHash },
-
-				]
-			} );
-	
-});
 
 // String replacement for page templates
 class ReplacePlaceholderForFile {
