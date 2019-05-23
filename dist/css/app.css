@@ -1,9 +1,9 @@
 /*!
  * 
  * ## Project Name        :  React DD Builder
- * ## Version             :  0.0.1
+ * ## Version             :  0.0.4
  * ## Based on            :  React DD Builder (https://github.com/xizon/react-dd-builder)
- * ## Last Update         :  May 22, 2019
+ * ## Last Update         :  May 23, 2019
  * ## Created by          :  UIUX Lab (https://uiux.cc)
  * ## Contact Us          :  uiuxlab@gmail.com
  * ## Released under the GPL 3 license.
