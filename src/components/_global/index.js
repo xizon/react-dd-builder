@@ -4,4 +4,5 @@ import './styles.scss';
 import App from '../InitDragDrop';
 
 
+
 ReactDOM.render(<App />, document.getElementById( 'app' ));
