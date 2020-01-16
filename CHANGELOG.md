@@ -1,6 +1,11 @@
 # Changelog
 
 
+#### = 0.0.7 (January 16, 2020) =
+
+* Fix: Fixed an issue where webpack might skip uncompressed CSS files packaging.
+
+
 #### = 0.0.6 (May 22, 2019) =
 
 * Fix: Fixed webpack-dev-server's hot start error that may be caused by replace-in-file-webpack-plugin.
