@@ -1,9 +1,9 @@
 # React DD Builder
 
 
-[![Travis CI](https://api.travis-ci.org/xizon/react-dd-builder.svg?branch=master)](https://travis-ci.org/xizon/react-dd-builder/)
+[![Travis CI](https://img.shields.io/travis/xizon/react-dd-builder/master?style=for-the-badge)](https://travis-ci.org/xizon/react-dd-builder/)
 [![npm version](https://img.shields.io/npm/v/react-dd-builder?style=for-the-badge)](https://www.npmjs.com/package/react-dd-builder)
-[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=for-the-badge)](LICENSE)
 
 
 ## Demo
