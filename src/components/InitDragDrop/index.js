@@ -352,10 +352,11 @@ class App extends Component {
 
     return (
 		
-	  <React.Fragment>
+	  <Fragment>
+		  
 		  <div className="app">
-
 			<div className="app__todos">
+		<h1 className="app-title">Expand the navigation and drag-drop it to the middle area, you can modify the text and sort items in the middle area.</h1>
 		        <ul className="app__primary-menu">
 					  {(() => {
 					   if ( !isLoading ) {
@@ -503,10 +504,11 @@ class App extends Component {
 		  </div>
 
           <SaveContainer id={"app-alldata"} />
+			  
 		  
 
 
-      </React.Fragment>
+      </Fragment>
 
 
     );

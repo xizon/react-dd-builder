@@ -130,7 +130,7 @@ class SortableItems extends Component {
 
     return (
 		
-		  <React.Fragment>
+		  <Fragment>
 		
 				  
 			  {(() => {
@@ -175,7 +175,7 @@ class SortableItems extends Component {
 
 			  })()}	  
 		
-		  </React.Fragment>
+		  </Fragment>
 	
     );
   }

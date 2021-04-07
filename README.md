@@ -57,10 +57,10 @@ $ cd /{your_directory}/react-dd-builder
 ```
 
 
-**Step 3.** Before doing all dev stuff make sure you have `Node 10+` installed. After that, run the following code in the main directory to install the node module dependencies.
+**Step 3.** Before doing all dev stuff make sure you have `Node 14+` installed. After that, run the following code in the main directory to install the node module dependencies.
 
 ```sh
-$ sudo npm install --only=dev --unsafe-perm --production
+$ sudo npm install
 ```
 
 
@@ -79,11 +79,19 @@ http://localhost:8080/examples/
 
 ### Note:
  
-**ERROR: npm update check failed.**
+**a) ERROR: npm update check failed.**
 
 ```sh
 $ sudo chown -R $USER:$(id -gn $USER) /Users/{username}/.config
 ```
+
+**b) If you upgrade the version of Node, please execute the following code:**
+
+```sh
+$ sudo npm install
+$ sudo npm rebuild node-sass
+```
+
 
 
 
@@ -117,7 +125,7 @@ react-dd-builder/
 │   │   └── app.min.js.map
 ├── src/
 │   ├── index.js
-│   ├── components/
+│   └── components/
 ├── examples/
 └──
 ```

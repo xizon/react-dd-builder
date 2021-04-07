@@ -13,9 +13,9 @@ class SaveContainer extends Component {
   render() {
 
     return (
-		
-		<textarea rows={15} cols={50} id={this.props.id} defaultValue={""} />
-	
+		<Fragment>
+			<textarea className="app-displaycode-area" rows={15} cols={50} id={this.props.id} defaultValue={""} />
+	    </Fragment>
     );
   }
   

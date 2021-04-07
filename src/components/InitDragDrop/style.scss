@@ -70,15 +70,29 @@ ul.app__primary-menu {
 	}
 }
 
+.app-title {
+	display: block;
+	max-width: 500px;
+	clear: both;
+	padding: 10px;
+	font-size: 14px;
+	pointer-events: none;
+	user-select: none;
+	text-align: left;
+}
+
+
 
 .app {
     text-align: center;
     display: flex;
     flex-direction: row;
 	
+
 	.app__todos {
-		background-color: #ddd;
-		min-height: 250px;
+		background-color: #fff0f0;
+		border: 3px solid #fdd;
+		min-height: 459px;
 		width: 200px;
 		padding: 10px;
 		margin: 10px;
@@ -86,7 +100,7 @@ ul.app__primary-menu {
 	}
 	.app__dones {
 		background-color: #efefef;
-		min-height: 250px;
+		min-height: 459px;
 		width: 200px;
 		padding: 10px;
 		margin: 10px;

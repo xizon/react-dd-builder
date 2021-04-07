@@ -1,5 +1,10 @@
 # Changelog
 
+#### = 0.0.8 (April 6, 2020) =
+
+* Optimized Node's dependencies.
+* Adjusted style for components	.
+
 
 #### = 0.0.7 (January 16, 2020) =
 

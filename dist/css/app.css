@@ -1,9 +1,9 @@
 /*!
  * 
  * ## Project Name        :  React DD Builder
- * ## Version             :  0.0.7
+ * ## Version             :  0.0.8
  * ## Based on            :  React DD Builder (https://github.com/xizon/react-dd-builder)
- * ## Last Update         :  January 16, 2020
+ * ## Last Update         :  April 7, 2021
  * ## Created by          :  UIUX Lab (https://uiux.cc)
  * ## Contact Us          :  uiuxlab@gmail.com
  * ## Released under the GPL 3 license.
@@ -369,6 +369,10 @@ html {
   top: 10px;
 }
 
+textarea.app-displaycode-area {
+  height: 459px;
+}
+
 textarea {
   border: 3px solid #ddd;
   font-size: 12px;
@@ -424,6 +428,17 @@ ul.app__primary-menu li ul.app__primary-submenu li > div:hover {
   background: lightblue;
 }
 
+.app-title {
+  display: block;
+  max-width: 500px;
+  clear: both;
+  padding: 10px;
+  font-size: 14px;
+  pointer-events: none;
+  user-select: none;
+  text-align: left;
+}
+
 .app {
   text-align: center;
   display: flex;
@@ -431,8 +446,9 @@ ul.app__primary-menu li ul.app__primary-submenu li > div:hover {
 }
 
 .app .app__todos {
-  background-color: #ddd;
-  min-height: 250px;
+  background-color: #fff0f0;
+  border: 3px solid #fdd;
+  min-height: 459px;
   width: 200px;
   padding: 10px;
   margin: 10px;
@@ -440,7 +456,7 @@ ul.app__primary-menu li ul.app__primary-submenu li > div:hover {
 
 .app .app__dones {
   background-color: #efefef;
-  min-height: 250px;
+  min-height: 459px;
   width: 200px;
   padding: 10px;
   margin: 10px;
