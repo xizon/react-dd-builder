@@ -1,4 +1,4 @@
-# Contributing to Web Kiter
+# Contributing to React DD Builder
 
 Hi, there!
 
@@ -16,7 +16,7 @@ Hi, there!
 <a name="res"></a>
 ## Resources
 
-Web Kiter bundles the following third-party resources:
+React DD Builder bundles the following third-party resources:
 
 - [React](https://reactjs.org/)
 
